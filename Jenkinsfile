@@ -29,7 +29,17 @@ pipeline {
             }
         }
         
-      
+        stage('Stop and Remove Container') {
+            steps {
+                script {
+                    // Зупинка та видалення контейнера MongoDB
+                    if (env.CONTAINER_ID) {
+                        sh "docker stop ${env.CONTAINER_ID}"
+                        sh "docker rm -f --volumes ${env.CONTAINER_ID}"
+                    }
+                }
+            }
+        }
     }
 }
 
