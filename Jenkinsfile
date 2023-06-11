@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     docker.image('mongo-express')
-                        .withRun("-e ME_CONFIG_MONGODB_ADMINUSERNAME=${env.MONGO_INITDB_ROOT_USERNAME} -e ME_CONFIG_MONGODB_ADMINPASSWORD=${env.MONGO_INITDB_ROOT_PASSWORD} -e ME_CONFIG_MONGODB_URL=mongodb://${env.MONGO_INITDB_ROOT_USERNAME}:${env.MONGO_INITDB_ROOT_PASSWORD}@mongo:${env.MONGODB_PORT}/ -p 8081:8081 --restart always") { c ->
+                        .withRun("-e ME_CONFIG_MONGODB_ADMINUSERNAME=${env.MONGO_INITDB_ROOT_USERNAME} -e ME_CONFIG_MONGODB_ADMINPASSWORD=${env.MONGO_INITDB_ROOT_PASSWORD} -e ME_CONFIG_MONGODB_URL=mongodb://${env.MONGO_INITDB_ROOT_USERNAME}:${env.MONGO_INITDB_ROOT_PASSWORD}@mongo:${env.MONGODB_PORT}/ -p 8081:8081 ") { c ->
                             // Wait for Mongo Express to start
                             sh 'sleep 10'
                         }
